@@ -1,1 +1,103 @@
-"HELLO WOrld" 
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="post_style.css" rel="stylesheet" type="text/css" />
+	<script>
+		$(function() {
+			for (var i = 0; i <= 29; i++) {
+				$("#year").append("<option value='" + i + "'>" + (130 - i) + "</option>");
+			}
+			for (var i = 0; i <= 11; i++) {
+				$("#month").append("<option value='" + i + "'>" + (i+1) + "</option>");
+			}
+			for (var i = 0; i <= 30; i++) {
+				$("#day").append("<option value='" + i + "'>" + (i+1) + "</option>");
+			}
+		});
+	</script>
+</head>
+
+<body>
+	
+	<!-- 表單，用於跟"後端"連結 -->
+	<form name="MyForm1" action="a.php" method="POST">
+		<table border="1">
+			<tbody>
+				<tr>
+					<td class="c_title">公告對象:</td>
+					<td class="c_content">
+						<!-- Checkbok[] hobby = new Checkbox["教","學","首"]-->
+						<input type="checkbox" name="hobby[]" value="1">教職員
+						<input type="checkbox" name="hobby[]" value="2">學生
+						<input type="checkbox" name="hobby[]" value="3">學校首頁
+					</td>
+				</tr>
+				<tr>
+					<td class="c_title">公告類型:</td>
+					<td class="c_content">
+						<form name="MyForm2" action="a.php" method="POST">
+							<!-- radio, 同 "name" 的會group在一起-->
+							<input type="radio" name="type" value="1">演講
+							<input type="radio" name="type" value="2">研討會
+							<input type="radio" name="type" value="3">徵才
+							<input type="radio" name="type" value="4">招生、進修教育訓練
+							<input type="radio" name="type" value="5">其他
+					</td>
+				</tr>
+				<tr>
+					<td class="c_title">主旨：</td>
+					<td>
+						<form name="MyForm3" action="a.php" method="POST">
+							<!-- 文字欄，可變動 -->
+							<textarea name="content" rows="1" cols="40" class="c_content"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="c_title">截止日期：</td>
+					<td class="c_content">
+						<form name="MyForm4" action="a.php" method="POST">
+							<!-- 下拉式選擇欄。option為欄內內容；size為一次顯示的量；selected為開始時，選則此項 -->
+							<select id="year" name="year" size="1">
+								
+							</select>
+							年
+							<select id="month" name="month" size="1">
+								
+							</select>
+							月
+							<select id="day" name="day" size="1">
+								
+							</select>
+							日
+					</td>
+				</tr>
+				<tr>
+					<td class="c_title">連結網址：</td>
+					<td>
+						<form name="MyForm5" action="a.php" method="POST">
+							<textarea name="url" rows="1" cols="40" class="c_content"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="c_title">公告內容：</td>
+					<td>
+						<form name="MyForm6" action="a.php" method="POST">
+							<textarea name="poster" rows="4" cols="40" class="c_content"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<form name="MyForm7" action="a.php" method="POST">
+							<input type="submit" size="20" value="確定送出" class="c_button">
+							<input type="reset" size="20" value="重新填寫" class="c_button">
+					</td>
+				</tr>
+				</tbotdy>
+		</table>
+	</form>
+</body>
+
+</html>
